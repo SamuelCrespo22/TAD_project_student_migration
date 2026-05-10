@@ -1,0 +1,6 @@
+pandas
+sqlalchemy
+prophet
+ydata-profiling
+scikit-learn
+numpy

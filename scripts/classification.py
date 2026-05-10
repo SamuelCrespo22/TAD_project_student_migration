@@ -83,9 +83,9 @@ X_val_processed = preprocessor.transform(X_val)
 X_test_processed = preprocessor.transform(X_test)
 
 models = {
-    "Random Forest (Black-box)": RandomForestClassifier(n_estimators=50, random_state=42, class_weight='balanced', n_jobs=-1),
-    "Decision Tree (Interpretable)": DecisionTreeClassifier(random_state=42, class_weight='balanced', max_depth=6),
-    "Logistic Regression (Interpretable)": LogisticRegression(max_iter=1000, random_state=42, class_weight='balanced')
+    "Random Forest": RandomForestClassifier(n_estimators=50, random_state=42, class_weight='balanced', n_jobs=-1),
+    "Decision Tree": DecisionTreeClassifier(random_state=42, class_weight='balanced', max_depth=6),
+    "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42, class_weight='balanced')
 }
 
 # ==========================================
@@ -122,9 +122,6 @@ print("\n--- Classification Report on Test Set (10%) ---")
 y_test_pred = final_model.predict(X_test_processed)
 print(classification_report(y_test, y_test_pred))
 
-# ==========================================
-# Interpretability
-# ==========================================
 if hasattr(final_model, 'feature_importances_'):
     cat_feature_names = preprocessor.named_transformers_['cat'].named_steps['onehot'].get_feature_names_out(categorical_features)
     all_feature_names = numeric_features + list(cat_feature_names)
